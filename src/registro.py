@@ -1,11 +1,11 @@
 import tkinter as tk
 import sqlite3
 import re
+from apiManager import get_db
 
-# Dirección de la base de datos local
-path = 'resources/database/operadores.db'
+db_path = get_db()
 
-# Configuración de la fuente para los botones y etiquetas
+
 font = ("Helvetica", 12)
 
 
@@ -56,7 +56,7 @@ class InterfazMain(tk.Tk):
         """
         Crea la base de datos local de operadores si no existe.
         """
-        conn = sqlite3.connect(path)
+        conn = sqlite3.connect(db_path)
         cursor = conn.cursor()
         cursor.execute('''
             CREATE TABLE IF NOT EXISTS operadores (
@@ -254,7 +254,7 @@ class InterfazMain(tk.Tk):
         username = self.username.get()
         password = self.password.get()
 
-        conn = sqlite3.connect(path)
+        conn = sqlite3.connect(db_path)
         cursor = conn.cursor()
         try:
             self.verificarRegistro(operator_id, name, phone,

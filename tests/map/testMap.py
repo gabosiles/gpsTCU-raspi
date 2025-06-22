@@ -1,19 +1,16 @@
-from flask import Flask, render_template
-from flask_socketio import SocketIO
 import csv
 import time
+import sys
+import os
 
-template_name = 'map.html'
+# Cambiar directorio de imports para agregar apiManager
+project_root = os.path.abspath(os.path.join(os.path.dirname(__file__),
+                                            '..', '..'))
+sys.path.insert(0, project_root)
+
+from src import apiManager
 
 datos_path = 'tests/map/datos_gps.csv'
-
-app = Flask(__name__, template_folder='../../resources/templates')
-socketio = SocketIO(app, cors_allowed_origins="*")
-
-
-@app.route('/')
-def index():
-    return render_template(template_name)
 
 
 def send_gps_data():
@@ -26,15 +23,13 @@ def send_gps_data():
         for row in content:
             lat = float(row[0])
             lon = float(row[1])
-            socketio.emit('gps_update', {'lat': lat, 'lon': lon})
-            time.sleep(1)  # Enviar cada 1s
+            data = {
+                "latitude": lat,
+                "longitude": lon,
+            }
+            apiManager.put_data('location.json', data)
+            time.sleep(apiManager.get_period())
 
 
-@socketio.on('connect')
-def handle_connect():
-    print("Cliente conectado")
-
-
-if __name__ == '__main__':
-    socketio.start_background_task(send_gps_data)
-    socketio.run(app, debug=True, host='0.0.0.0', port=5000)
+if __name__ == "__main__":
+    send_gps_data()

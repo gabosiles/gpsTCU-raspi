@@ -2,13 +2,10 @@ import tkinter as tk
 import threading
 from funcionesGPS import manejarGPS
 import sqlite3
-import requests
+from apiManager import get_db, post_data
 
 # Dirección de la base de datos local
-path = 'resources/database/operadores.db'
-
-# URL de la API para enviar datos de posición
-api_url = 'https://realtime.bucr.digital/api/position'
+db_path = get_db()
 
 # Configuración de la fuente para los botones y etiquetas
 font = ("Helvetica", 12)
@@ -16,7 +13,8 @@ font = ("Helvetica", 12)
 
 class InterfazMain(tk.Tk):
     """
-    Clase que genera la interfaz principal de inicio de sesión y control de viaje.
+    Clase que genera la interfaz principal de inicio de sesión
+    y control de viaje.
 
     Hereda de :class:`tkinter.Tk`.
 
@@ -221,7 +219,7 @@ class InterfazMain(tk.Tk):
         """
 
         # Se lee la base de datos local.
-        conn = sqlite3.connect(path)
+        conn = sqlite3.connect(db_path)
         cursor = conn.cursor()
 
         # Se busca el conjunto de nombre de usuario y contraseña
@@ -263,18 +261,7 @@ class InterfazMain(tk.Tk):
                 "phone": operador[2],
                 "email": operador[3]
             }
-            try:
-                response = requests.post(
-                    api_url, headers={"Content-Type": "application/json"},
-                    json=data)
-                print(response.status_code)
-                if response.status_code == 200:
-                    print("Datos enviados exitosamente a la API.")
-                else:
-                    print(f"Error al enviar \
-                            datos: {response.status_code} - {response.text}")
-            except requests.RequestException as e:
-                print(f"Excepción al enviar datos a la API: {e}")
+            post_data("AGREGAR EXTENSION", data)
 
             # Ocultar el marco de inicio de sesión y mostrar el marco del viaje
             self.login_frame.pack_forget()

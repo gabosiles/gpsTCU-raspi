@@ -1,9 +1,7 @@
 import serial
-import requests
 import csv
-
-# URL de la API
-api_url = "https://api-tcu-ucr-default-rtdb.firebaseio.com/location.json"
+import time
+from apiManager import put_data, get_period
 
 
 def guardar_csv(nombre_archivo, latitud, longitud):
@@ -100,19 +98,8 @@ def enviar_api(latitud_decimal, longitud_decimal):
     }
 
     # Se envía la solicitud PUT a la API
-    try:
-        # Enviar datos a la API
-        response = requests.put(api_url, json=data)
-        if response.status_code == 200:
-            print(
-                f"Datos enviados correctamente a la API. Latitud: "
-                f"{latitud_decimal}, Longitud: {longitud_decimal}")
-        else:
-            print(
-                f"Error al enviar los datos a la API. Código de estado:"
-                f"{response.status_code}")
-    except requests.exceptions.RequestException as e:
-        print(f"Error de conexión al intentar enviar los datos: {e}")
+    put_data('location.json', data)
+    time.sleep(get_period())
 
 
 def manejarGPS(stop_event):
@@ -126,8 +113,8 @@ def manejarGPS(stop_event):
     port = '/dev/serial0'               # Se define puerto
     baudrate = 9600                     # Frecuencia/velocidad de trabajo
     # Archivo de texto donde se guardarán los datos con append
-    archivo_txt = 'gps_data.txt'
-    archivo_csv = 'datos_gps.csv'
+    archivo_txt = 'resources/database/gps_data.txt'
+    archivo_csv = 'resources/database/datos_gps.csv'
 
     # Se abre puerto serial
     ser = serial.Serial(port, baudrate, timeout=10)
