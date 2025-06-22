@@ -1,2 +1,8 @@
 sphinx==7.0.0
-sphinx_rtd_theme
+sphinx-rtd-theme
+requests
+pyserial
+celery[redis]
+sqlalchemy
+Flask
+Flask-SocketIO
