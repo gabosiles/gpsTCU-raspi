@@ -1,17 +1,15 @@
 .. gpsTCU-raspi documentation master file, created by
-   sphinx-quickstart on Tue Apr 29 09:54:00 2025.
+   sphinx-quickstart on Sun Jun 22 17:04:38 2025.
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-gpsTCU-raspi documentation
+Documentación de proyecto gpsTCU-raspi.
 ==========================
 
-Add your content using ``reStructuredText`` syntax. See the
-`reStructuredText <https://www.sphinx-doc.org/en/master/usage/restructuredtext/index.html>`_
-documentation for details.
-
+Para más información del proyecto, refierase a la página oficial de información en el proyecto: https://docs.google.com/document/d/1xR8UP772NKoEzqvYqhJaCBpMWwaAhO1n/edit
 
 .. toctree::
    :maxdepth: 2
    :caption: Contents:
 
+   modules
