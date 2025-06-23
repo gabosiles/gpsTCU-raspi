@@ -1,5 +1,6 @@
-apiManager module
-=================
+apiManager
+===================================================
+Maneja los llamados a la API de posición del bus.
 
 .. automodule:: apiManager
    :members:

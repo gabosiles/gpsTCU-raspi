@@ -6,10 +6,10 @@
 Documentación de proyecto gpsTCU-raspi.
 ======================================================================================================================================================================================
 
-Para más información del proyecto, refierase a la `página oficial <https://docs.google.com/document/d/1xR8UP772NKoEzqvYqhJaCBpMWwaAhO1n/edit>`_ de información en el proyecto: 
+Documentación estática de scripts de Python usados en proyecto `gpsTCU-raspi <https://github.com/gabosiles/gpsTCU-raspi>`_. Para más información del proyecto, refierase a la `página oficial <https://docs.google.com/document/d/1xR8UP772NKoEzqvYqhJaCBpMWwaAhO1n/edit>`_ de información en el proyecto. 
 
 .. toctree::
    :maxdepth: 2
-   :caption: Contents:
+   :caption: Contenido:
 
    modules
