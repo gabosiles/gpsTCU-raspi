@@ -213,8 +213,7 @@ class InterfazMain(tk.Tk):
         :type username: str
         :param password: Contraseña ingresada.
         :type password: str
-        :raises ValueError: Si alguno de los campos no cumple
-        con los requisitos.
+        :raises ValueError: Indica si no cumple requisitos.
         """
         if not re.match("^[0-9]{1,9}$", operator_id):
             raise ValueError("ID inválido, debe ser numérico.")

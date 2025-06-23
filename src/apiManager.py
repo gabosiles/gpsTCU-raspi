@@ -1,8 +1,14 @@
 import requests
 import configparser
+import os
+
+current_dir = os.path.dirname(os.path.abspath(__file__))
+project_root = os.path.dirname(current_dir)
+config_path = os.path.join(project_root, 'pipeline.cfg')
+
 
 config = configparser.ConfigParser()
-config.read('pipeline.cfg')
+config.read(config_path)
 url_base = config['api']['url']
 token = config['api']['token']
 db_path = config['db']['path']
