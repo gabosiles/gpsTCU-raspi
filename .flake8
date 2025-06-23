@@ -1,0 +1,13 @@
+[flake8]
+max-complexity = 10
+exclude =
+    *.md,
+    *.cfg,
+    *.txt,
+    *.html,
+    *.pyc,
+    *.csv,
+    *.sh,
+    venv/,
+    docs/,
+    resources/,

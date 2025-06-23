@@ -6,3 +6,5 @@ celery[redis]
 sqlalchemy
 Flask
 Flask-SocketIO
+flake8
+flake8-docstrings
