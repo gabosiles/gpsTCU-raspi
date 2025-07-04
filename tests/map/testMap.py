@@ -1,13 +1,15 @@
-import csv
-import time
-import sys
 import os
-from src import apiManager
+import sys
 
 # Cambiar directorio de imports para agregar apiManager
 project_root = os.path.abspath(os.path.join(os.path.dirname(__file__),
                                             '..', '..'))
 sys.path.insert(0, project_root)
+
+import csv
+import time
+from src import apiManager
+
 
 datos_path = 'tests/map/datos_gps.csv'
 
