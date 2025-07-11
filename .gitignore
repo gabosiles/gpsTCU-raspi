@@ -11,3 +11,6 @@ __pycache__/
 # Ambiente virtual
 venv/
 env/
+
+# Sphinx build
+docs/build/

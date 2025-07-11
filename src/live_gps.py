@@ -2,6 +2,7 @@ from flask import Flask, render_template
 from flask_socketio import SocketIO
 import time
 from apiManager import get_data, get_period
+import csv
 
 app = Flask(__name__, template_folder='../resources/templates')
 socketio = SocketIO(app, cors_allowed_origins="*")

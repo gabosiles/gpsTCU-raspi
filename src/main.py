@@ -69,12 +69,12 @@ class InterfazMain(tk.Tk):
         self.user_pass_frame = tk.Frame(self.login_frame, bg="lightblue")
         self.user_pass_frame.pack(pady=20)
 
-        tk.Label(self.user_pass_frame, text="USUARIO:", bg="yellow",
+        tk.Label(self.user_pass_frame, text="USUARIO:", bg="lightblue",
                  font=font).pack(side=tk.LEFT, padx=5)
         tk.Entry(self.user_pass_frame, textvariable=self.username,
                  font=font).pack(side=tk.LEFT, padx=5)
 
-        tk.Label(self.user_pass_frame, text="CONTRASEÑA:", bg="yellow",
+        tk.Label(self.user_pass_frame, text="CONTRASEÑA:", bg="lightblue",
                  font=font).pack(side=tk.LEFT, padx=5)
         tk.Entry(self.user_pass_frame, textvariable=self.password,
                  show="*", font=font).pack(side=tk.LEFT, padx=5)
@@ -90,7 +90,8 @@ class InterfazMain(tk.Tk):
         # Label para mostrar mensajes de estado de inicio
         self.status_login = tk.StringVar()
         tk.Label(self.login_frame, textvariable=self.status_login,
-                 fg="red", font=font).pack(expand=True, pady=1)
+                 bg="lightblue", fg="red",
+                 font=font).pack(expand=True, pady=1)
 
         # Crear el teclado y almacenarlo en self.keyboard_frame
         self.keyboard_frame = tk.Frame(self.login_frame, bg="lightblue")
@@ -122,7 +123,8 @@ class InterfazMain(tk.Tk):
         # Label para mostrar mensajes de estado
         self.status_message = tk.StringVar()
         tk.Label(self.trip_frame, textvariable=self.status_message,
-                 font=font, fg="green").pack(expand=True, pady=10)
+                 font=font, fg="green",
+                 bg="lightblue").pack(expand=True, pady=10)
 
     def create_keyboard(self):
         """
@@ -152,8 +154,8 @@ class InterfazMain(tk.Tk):
                 bg_color = "red"
                 fg_color = "white"
             else:
-                bg_color = "black"
-                fg_color = "white"
+                bg_color = "lightgray"
+                fg_color = "black"
 
             # Crear el botón con los colores aplicados
             button = tk.Button(
