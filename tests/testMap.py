@@ -3,7 +3,7 @@ import sys
 
 # Cambiar directorio de imports para agregar apiManager
 project_root = os.path.abspath(os.path.join(os.path.dirname(__file__),
-                                            '..', '..'))
+                                            '..'))
 sys.path.insert(0, project_root)
 
 import csv
@@ -11,7 +11,7 @@ import time
 from src import apiManager
 
 
-datos_path = 'tests/map/datos_gps.csv'
+datos_path = 'tests/prueba_bus/datos_recibidos.csv'
 
 
 def send_gps_data():

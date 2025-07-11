@@ -35,10 +35,6 @@ def send_gps_data():
         lat = data['latitude']
         lon = data['longitude']
         socketio.emit('gps_update', {'lat': lat, 'lon': lon})
-        with open("Prueba_4jul", mode='a', newline='') as archivo_csv:
-            escritor_csv = csv.writer(archivo_csv)
-            # Escribir la fila con latitud y longitud
-            escritor_csv.writerow([lat, lon])
         time.sleep(period)
 
 
