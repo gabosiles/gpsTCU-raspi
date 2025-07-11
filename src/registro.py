@@ -80,32 +80,32 @@ class InterfazMain(tk.Tk):
             self.grid_columnconfigure(i, weight=1)
 
         # Usar grid para colocar los campos en 3 columnas y 2 filas
-        tk.Label(self, text="ID del Operador:", bg="yellow",
+        tk.Label(self, text="ID del Operador:", bg="lightblue",
                  font=font).grid(row=0, column=0, padx=5, pady=7)
         tk.Entry(self, textvariable=self.operator_id, font=font).grid(
             row=0, column=1, padx=5, pady=7)
 
-        tk.Label(self, text="Nombre y Apellido:",  bg="yellow",
+        tk.Label(self, text="Nombre y Apellido:",  bg="lightblue",
                  font=font).grid(row=0, column=2, padx=5, pady=7)
         tk.Entry(self, textvariable=self.name, font=font).grid(
             row=0, column=3, padx=5, pady=7)
 
-        tk.Label(self, text="Teléfono:", bg="yellow",
+        tk.Label(self, text="Teléfono:", bg="lightblue",
                  font=font).grid(row=1, column=0, padx=5, pady=7)
         tk.Entry(self, textvariable=self.phone, font=font).grid(
             row=1, column=1, padx=5, pady=7)
 
-        tk.Label(self, text="Email:", bg="yellow",
+        tk.Label(self, text="Email:", bg="lightblue",
                  font=font).grid(row=1, column=2, padx=5, pady=7)
         tk.Entry(self, textvariable=self.email, font=font).grid(
             row=1, column=3, padx=5, pady=7)
 
-        tk.Label(self, text="Nombre de usuario:",  bg="yellow",
+        tk.Label(self, text="Nombre de usuario:",  bg="lightblue",
                  font=font).grid(row=2, column=0, padx=5, pady=7)
         tk.Entry(self, textvariable=self.username, font=font).grid(
             row=2, column=1, padx=5, pady=7)
 
-        tk.Label(self, text="Contraseña:",  bg="yellow",
+        tk.Label(self, text="Contraseña:",  bg="lightblue",
                  font=font).grid(row=2, column=2, padx=5, pady=7)
         tk.Entry(self, textvariable=self.password, font=font,
                  show="*").grid(row=2, column=3, padx=5, pady=7)
@@ -118,7 +118,7 @@ class InterfazMain(tk.Tk):
 
         # Label para mostrar el mensaje de registro
         self.success_label = tk.Label(
-            self, textvariable=self.message, fg="green")
+            self, textvariable=self.message, bg="lightblue")
         self.success_label.grid(row=4, column=0, columnspan=4)
 
     def create_keyboard(self):
@@ -154,8 +154,8 @@ class InterfazMain(tk.Tk):
                 bg_color = "red"
                 fg_color = "white"
             else:
-                bg_color = "black"
-                fg_color = "white"
+                bg_color = "lightgray"
+                fg_color = "black"
 
             # Crear el botón con los colores aplicados
             button = tk.Button(
@@ -179,22 +179,22 @@ class InterfazMain(tk.Tk):
             else:
                 button.grid(row=row, column=col)
 
-        def key_press(self, key):
-            """Simula el efecto de presionar la tecla seleccionada.
+    def key_press(self, key):
+        """Simula el efecto de presionar la tecla seleccionada.
 
-            :param key: Tecla presionada en teclado táctil.
-            :type key: tk.button
-            """
-            focused_widget = self.focus_get()
-            if isinstance(focused_widget, tk.Entry):
-                if key == "BORRAR":
-                    current_text = focused_widget.get()
-                    focused_widget.delete(0, tk.END)
-                    focused_widget.insert(0, current_text[:-1])
-                elif key == "ESPACIO":
-                    focused_widget.insert(tk.END, " ")
-                else:
-                    focused_widget.insert(tk.END, key)
+        :param key: Tecla presionada en teclado táctil.
+        :type key: tk.button
+        """
+        focused_widget = self.focus_get()
+        if isinstance(focused_widget, tk.Entry):
+            if key == "BORRAR":
+                current_text = focused_widget.get()
+                focused_widget.delete(0, tk.END)
+                focused_widget.insert(0, current_text[:-1])
+            elif key == "ESPACIO":
+                focused_widget.insert(tk.END, " ")
+            else:
+                focused_widget.insert(tk.END, key)
 
     def verificarRegistro(self, operator_id, name,
                           phone, email, username, password):
